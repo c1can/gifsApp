@@ -1,4 +1,5 @@
 import { Routes } from "./components/Routes/App.routing";
+import { Link } from "wouter";
 import "./App.css";
 
 function App() {
