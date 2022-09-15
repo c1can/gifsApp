@@ -1,6 +1,6 @@
-import { Home } from "../Home";
-import { Gifs } from "../Gifs";
-import { Details } from "../Details";
+import { Home } from "../src/components/Home";
+import { Gifs } from "../src/components/Gifs";
+import { Details } from "../src/components/Details";
 import { Route } from "wouter";
 
 export const Routes = () => {

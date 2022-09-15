@@ -1,6 +1,29 @@
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
+import { Getgifs } from "../services/Gif";
+import { ListGifs } from "./ListGifs";
 
 export const Home = () => {
+  const [gifValue, setValue] = useState("");
+  const [path, setPath] = useLocation();
+  const [gifs, setGifs] = useState([]);
+
+  useEffect(() => {
+    const mycall = async () => {
+      const data = await Getgifs({ keyword: "rick" });
+      setGifs(data);
+    };
+    mycall();
+  }, []);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    setPath(`/gif/${gifValue}`);
+  };
+  const handleChange = (evt) => {
+    setValue(evt.target.value);
+  };
+
   return (
     <>
       <h1 className="mb-6 text-3xl font-bold">HomePage</h1>
@@ -24,6 +47,20 @@ export const Home = () => {
           Gifs de Messi
         </Link>
       </nav>
+
+      <form onSubmit={handleSubmit} className="my-6">
+        <label htmlFor="search">Search</label>
+        <input
+          onChange={handleChange}
+          className="mx-2 text-black p-1"
+          type="text"
+          name="search"
+        />
+        <button>Submit</button>
+      </form>
+      <h2>Ultimas Busquedas:</h2>
+
+      <ListGifs gifs={gifs} />
     </>
   );
 };
