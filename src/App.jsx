@@ -1,18 +1,12 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { Routes } from "./components/Routes/App.routing";
+import "./App.css";
 
 function App() {
-
-  const [ gifs, gifsValues ] = useState("")
-
-
-  
-
   return (
     <div className="App">
-     <h1>Gifs App</h1>
+      <Routes />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
