@@ -27,7 +27,7 @@ export const Home = () => {
   return (
     <>
       <h1 className="mb-6 text-3xl font-bold">HomePage</h1>
-      <nav className="flex gap-5">
+      <nav className="flex justify-center gap-4">
         <Link
           className="bg-white text-black py-1.5 rounded-sm px-2 no-underline"
           to="/gif/programacion"
@@ -58,7 +58,7 @@ export const Home = () => {
         />
         <button>Submit</button>
       </form>
-      <h2>Ultimas Busquedas:</h2>
+      <h2 className="text-2xl">Ultimas Busquedas:</h2>
 
       <ListGifs gifs={gifs} />
     </>
