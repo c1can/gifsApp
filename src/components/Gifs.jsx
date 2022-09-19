@@ -1,17 +1,8 @@
-import { useEffect, useState } from "react";
-import { Getgifs } from "../services/Gif";
+import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
 
 export const Gifs = ({ param }) => {
-  const [gifs, setGifs] = useState([]);
-
-  useEffect(() => {
-    const mycall = async () => {
-      const data = await Getgifs({ keyword: param });
-      setGifs(data);
-    };
-    mycall();
-  }, [param]);
+  const { gifs } = useGifs(param);
 
   return <ListGifs gifs={gifs} />;
 };
