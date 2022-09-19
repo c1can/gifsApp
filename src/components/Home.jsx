@@ -1,20 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
+import { useGifs } from "../Hooks/useGifs";
 import { Getgifs } from "../services/Gif";
 import { ListGifs } from "./ListGifs";
 
 export const Home = () => {
   const [gifValue, setValue] = useState("");
   const [path, setPath] = useLocation();
-  const [gifs, setGifs] = useState([]);
 
-  useEffect(() => {
-    const mycall = async () => {
-      const data = await Getgifs({ keyword: "rick" });
-      setGifs(data);
-    };
-    mycall();
-  }, []);
+  const { gifs } = useGifs("Panda");
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
