@@ -1,14 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useGifs } from "../Hooks/useGifs";
-import { Getgifs } from "../services/Gif";
 import { ListGifs } from "./ListGifs";
 
 export const Home = () => {
   const [gifValue, setValue] = useState("");
   const [path, setPath] = useLocation();
 
-  const { gifs } = useGifs("Panda");
+  const { gifs } = useGifs();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

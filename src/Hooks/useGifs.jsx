@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Getgifs } from "../services/Gif";
 
-export const useGifs = (param) => {
+export const useGifs = (param = null) => {
   const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
     const mycall = async () => {
-      const data = await Getgifs({ keyword: param });
+      const newKeyword = param || localStorage.getItem("Mygif");
+      const data = await Getgifs({ keyword: newKeyword });
       setGifs(data);
     };
     mycall();
