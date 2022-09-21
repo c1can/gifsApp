@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Getgifs } from "../services/Gif";
+import { GifContext } from "../context/GifContext";
 
 export const useGifs = (param = null) => {
-  const [gifs, setGifs] = useState([]);
+  const { gifs, setGifs } = useContext(GifContext);
 
   useEffect(() => {
     const mycall = async () => {

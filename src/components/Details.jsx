@@ -1,18 +1,15 @@
 import { useContext } from "react";
-import { StaticContext } from "../context/StaticContext";
 import { GifContext } from "../context/GifContext";
+import { Gif } from "./Gif";
 
 export const Details = ({ id }) => {
-  const context = useContext(StaticContext);
-  const context2 = useContext(GifContext);
+  const { gifs } = useContext(GifContext);
 
-  console.log(context2);
-  console.log(context);
+  const img = gifs.find((gif) => gif.id === id);
 
-  return (
-    <div>
-      <h1>Hola Details</h1>
-      <p>este es mi id: {id}</p>
-    </div>
-  );
+  const { images, title } = img;
+  const { downsized_medium } = images;
+  const { url } = downsized_medium;
+
+  return <Gif title={title} image={url} />;
 };

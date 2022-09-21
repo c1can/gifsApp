@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
+import { Nav } from "./Nav";
 import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
 
@@ -20,26 +21,8 @@ export const Home = () => {
   return (
     <>
       <h1 className="mb-6 text-3xl font-bold">HomePage</h1>
-      <nav className="flex justify-center gap-4">
-        <Link
-          className="bg-white text-black py-1.5 rounded-sm px-2 no-underline"
-          to="/gif/programacion"
-        >
-          Gifs de Programacion
-        </Link>
-        <Link
-          className="bg-white text-black py-1.5 rounded-sm px-2 no-underline"
-          to="/gif/qatar"
-        >
-          Gifs de Qatar
-        </Link>
-        <Link
-          className="bg-white text-black py-1.5 rounded-sm px-2 no-underline"
-          to="/gif/messi"
-        >
-          Gifs de Messi
-        </Link>
-      </nav>
+
+      <Nav />
 
       <form onSubmit={handleSubmit} className="my-6">
         <label htmlFor="search">Search</label>
