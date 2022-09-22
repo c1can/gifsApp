@@ -1,7 +1,7 @@
 import { API_KEY } from "./settings"
 
-export const Getgifs = async( { keyword } ) => {
-    let url = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
+export const getTrending = async() => {
+    let url = `https://api.giphy.com/v1/trending/searches?api_key=${API_KEY}`
 
     const petition = await fetch(url)
     const response = await petition.json()

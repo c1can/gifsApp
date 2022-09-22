@@ -73,4 +73,6 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
+.list_gifs {
+  min-height: 100vh;
+}
