@@ -28,6 +28,14 @@ export const LazyTrending = () => {
   const [show, setShow] = useState(false);
   const elementRef = useRef();
 
+  useEffect(() => {
+    const intersection = new IntersectionObserver(change, {
+      rootMargin: "100px",
+    });
+
+    intersection.observe(elementRef.current);
+  }, []);
+
   const change = (entries, intersection) => {
     const { isIntersecting } = entries[0];
     console.log(isIntersecting);
@@ -37,14 +45,6 @@ export const LazyTrending = () => {
       intersection.disconnect();
     }
   };
-
-  useEffect(() => {
-    const intersection = new IntersectionObserver(change, {
-      rootMargin: "100px",
-    });
-
-    intersection.observe(elementRef.current);
-  }, []);
 
   return <section ref={elementRef}>{show ? <TrendingGifs /> : null}</section>;
 };
