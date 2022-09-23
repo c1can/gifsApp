@@ -1,7 +1,6 @@
 import { useTrending } from "../Hooks/useTrending";
 import { Link } from "wouter";
 import { Fragment } from "react";
-import { useLazy } from "../Hooks/useLazy";
 
 const TrendingGifs = () => {
   const { trending } = useTrending();
@@ -23,8 +22,4 @@ const TrendingGifs = () => {
     </div>
   );
 };
-
-export const LazyTrending = () => {
-  const { elementRef, show } = useLazy();
-  return <section ref={elementRef}>{show ? <TrendingGifs /> : null}</section>;
-};
+export default TrendingGifs;

@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { Nav } from "./Nav";
 import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
-import { LazyTrending } from "./TrendingGifs";
+import { LazyTrending } from "./LazyTrending";
 
 export const Home = () => {
   const [gifValue, setValue] = useState("");
