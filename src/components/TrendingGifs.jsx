@@ -1,7 +1,7 @@
 import { useTrending } from "../Hooks/useTrending";
 import { Link } from "wouter";
 import { Fragment } from "react";
-import { useState, useEffect, useRef } from "react";
+import { useLazy } from "../Hooks/useLazy";
 
 const TrendingGifs = () => {
   const { trending } = useTrending();
@@ -25,26 +25,6 @@ const TrendingGifs = () => {
 };
 
 export const LazyTrending = () => {
-  const [show, setShow] = useState(false);
-  const elementRef = useRef();
-
-  useEffect(() => {
-    const intersection = new IntersectionObserver(change, {
-      rootMargin: "100px",
-    });
-
-    intersection.observe(elementRef.current);
-  }, []);
-
-  const change = (entries, intersection) => {
-    const { isIntersecting } = entries[0];
-    console.log(isIntersecting);
-
-    if (isIntersecting) {
-      setShow(true);
-      intersection.disconnect();
-    }
-  };
-
+  const { elementRef, show } = useLazy();
   return <section ref={elementRef}>{show ? <TrendingGifs /> : null}</section>;
 };
