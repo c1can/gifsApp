@@ -3,12 +3,14 @@ import { useGifs } from "../Hooks/useGifs";
 
 export const ListGifs = ({ gifs }) => {
   const { setPage } = useGifs();
+
   const handleButton = () => {
     setPage((prev) => prev + 1);
   };
+
   return (
     <>
-      <section className="list_gifs w-4/5 auto-margin grid custom-grid gap-4">
+      <section className="list_gifs w-4/5 auto-margin grid custom-grid gap-4 items-center">
         {gifs.map(({ title, id, images }) => {
           const { downsized_medium } = images;
           const { url } = downsized_medium;

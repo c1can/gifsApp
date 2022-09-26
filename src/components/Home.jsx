@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
-import { Nav } from "./Nav";
 import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
 import { LazyTrending } from "./LazyTrending";

@@ -9,4 +9,7 @@
     .auto-margin {
         margin: 0 auto;
     }
+    .max-height {
+        max-height: 300px;
+    }
 }
