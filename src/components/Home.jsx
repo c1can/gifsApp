@@ -32,10 +32,10 @@ export const Home = () => {
         />
         <button>Submit</button>
       </form>
+      <LazyTrending />
       <h2 className="text-2xl font-bold my-4">Ultimas Busquedas:</h2>
 
       <ListGifs gifs={gifs} />
-      <LazyTrending />
     </>
   );
 };
