@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GifContext } from "../context/GifContext";
-import { Gif } from "./Gif";
+import Gif from "./Gif";
 
 export const Details = ({ id }) => {
   const { gifs } = useContext(GifContext);

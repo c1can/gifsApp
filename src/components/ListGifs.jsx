@@ -1,4 +1,4 @@
-import { Gif } from "./Gif";
+import Gif from "./Gif";
 import { useGifs } from "../Hooks/useGifs";
 
 export const ListGifs = ({ gifs }) => {

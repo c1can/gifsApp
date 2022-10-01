@@ -1,6 +1,7 @@
+import React from "react";
 import { Link } from "wouter";
 
-export const Gif = ({ title, image, id }) => {
+const Gif = ({ title, image, id }) => {
   return (
     <Link to={`/details/${id}`}>
       <div className="flex flex-col gap-4 card">
@@ -9,3 +10,5 @@ export const Gif = ({ title, image, id }) => {
     </Link>
   );
 };
+
+export default React.memo(Gif);
