@@ -6,6 +6,7 @@ export const useGifs = (param = null) => {
   let INITIAL_STATE = 0;
   const [page, setPage] = useState(INITIAL_STATE);
   const { gifs, setGifs } = useContext(GifContext);
+  const [loading, setLoading] = useState(false);
 
   const newKeyword = param || localStorage.getItem("Mygif");
 
@@ -23,9 +24,10 @@ export const useGifs = (param = null) => {
     const call = async () => {
       const data = await Getgifs({ keyword: newKeyword, page: page });
       setGifs((prev) => prev.concat(data));
+      setLoading(false);
     };
     call();
   }, [page]);
 
-  return { gifs, setPage };
+  return { gifs, setPage, loading, setLoading };
 };

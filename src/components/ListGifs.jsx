@@ -2,14 +2,16 @@ import Gif from "./Gif";
 import { useGifs } from "../Hooks/useGifs";
 import { lazyGifs } from "../Hooks/useLazy";
 import { useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export const ListGifs = ({ gifs }) => {
-  const { setPage } = useGifs();
+  const { setPage, setLoading, loading } = useGifs();
   const { show, elementRef } = lazyGifs();
 
   useEffect(() => {
     if (show) {
       setPage((prev) => prev + 1);
+      setLoading(true);
     }
   }, [show]);
 
@@ -23,6 +25,7 @@ export const ListGifs = ({ gifs }) => {
           return <Gif title={title} image={url} id={id} key={id} />;
         })}
       </section>
+      <ClipLoader loading={loading} color={"#fff"} size={50} />
       <div className="watch h-4 w-100" ref={elementRef}></div>
     </>
   );
