@@ -1,9 +1,11 @@
 import Gif from "./Gif";
 import { useSingle } from "../Hooks/useSingleGif";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useTitle } from "../Hooks/useTitle";
 
 export const Details = ({ id }) => {
   const { gif, loading } = useSingle(id);
+  useTitle(gif.title);
 
   if (loading) return <ClipLoader size={50} color={"#fff"} />;
   if (!gif) return null;
@@ -12,5 +14,9 @@ export const Details = ({ id }) => {
   const { downsized_medium } = images;
   const { url } = downsized_medium;
 
-  return <Gif title={title} image={url} />;
+  return (
+    <div className="details h-screen grid place-content-center">
+      <Gif title={title} image={url} />
+    </div>
+  );
 };
