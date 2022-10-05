@@ -1,12 +1,17 @@
 import Gif from "./Gif";
 import { useGifs } from "../Hooks/useGifs";
+import { lazyGifs } from "../Hooks/useLazy";
+import { useEffect } from "react";
 
 export const ListGifs = ({ gifs }) => {
   const { setPage } = useGifs();
+  const { show, elementRef } = lazyGifs();
 
-  const handleButton = () => {
-    setPage((prev) => prev + 1);
-  };
+  useEffect(() => {
+    if (show) {
+      setPage((prev) => prev + 1);
+    }
+  }, [show]);
 
   return (
     <>
@@ -18,12 +23,7 @@ export const ListGifs = ({ gifs }) => {
           return <Gif title={title} image={url} id={id} key={id} />;
         })}
       </section>
-      <button
-        onClick={handleButton}
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded my-20"
-      >
-        Load More
-      </button>
+      <div className="watch h-4 w-100" ref={elementRef}></div>
     </>
   );
 };

@@ -1,13 +1,14 @@
-import { useContext } from "react";
-import { GifContext } from "../context/GifContext";
 import Gif from "./Gif";
+import { useSingle } from "../Hooks/useSingleGif";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export const Details = ({ id }) => {
-  const { gifs } = useContext(GifContext);
+  const { gif, loading } = useSingle(id);
 
-  const img = gifs.find((gif) => gif.id === id);
+  if (loading) return <ClipLoader size={50} color={"#fff"} />;
+  if (!gif) return null;
 
-  const { images, title } = img;
+  const { images, title } = gif;
   const { downsized_medium } = images;
   const { url } = downsized_medium;
 

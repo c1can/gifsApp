@@ -23,3 +23,24 @@ export const useLazy = () => {
 
   return { show, elementRef };
 };
+
+export const lazyGifs = () => {
+  const [show, setShow] = useState(false);
+  const elementRef = useRef();
+
+  const change = (entries, intersection) => {
+    const { isIntersecting } = entries[0];
+
+    isIntersecting ? setShow(true) : setShow(false);
+  };
+
+  useEffect(() => {
+    const intersection = new IntersectionObserver(change, {
+      rootMargin: "100px",
+    });
+
+    intersection.observe(elementRef.current);
+  }, [show]);
+
+  return { show, elementRef };
+};

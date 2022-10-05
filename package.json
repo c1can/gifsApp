@@ -19,6 +19,7 @@
     "@vitejs/plugin-react": "^2.1.0",
     "autoprefixer": "^10.4.10",
     "postcss": "^8.4.16",
+    "react-spinners": "^0.13.4",
     "tailwindcss": "^3.1.8",
     "vite": "^3.1.0"
   }
