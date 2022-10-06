@@ -5,10 +5,11 @@ import { useTitle } from "../Hooks/useTitle";
 
 export const Details = ({ id }) => {
   const { gif, loading } = useSingle(id);
-  useTitle(gif.title);
 
   if (loading) return <ClipLoader size={50} color={"#fff"} />;
   if (!gif) return null;
+
+  useTitle(gif.title);
 
   const { images, title } = gif;
   const { downsized_medium } = images;
