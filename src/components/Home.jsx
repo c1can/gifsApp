@@ -2,11 +2,13 @@ import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
 import { LazyTrending } from "./LazyTrending";
 import Search from "./Search";
+import { Head } from "./Helmet";
 
 export const Home = () => {
   const { gifs } = useGifs();
   return (
     <>
+      <Head title="Homepage" description="Initial page" />
       <h1 className="mb-6 text-3xl font-bold">HomePage</h1>
       <Search />
       <LazyTrending />
