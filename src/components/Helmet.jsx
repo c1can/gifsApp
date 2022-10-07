@@ -4,7 +4,7 @@ export function Head({ title, description }) {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Gify| {title}</title>
+        <title>{title} | Gify</title>
         <meta name="description" content={description} />
       </Helmet>
     </HelmetProvider>
