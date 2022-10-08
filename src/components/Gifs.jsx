@@ -2,6 +2,7 @@ import { useGifs } from "../Hooks/useGifs";
 import { ListGifs } from "./ListGifs";
 import { Head } from "./Helmet";
 import { Link } from "wouter";
+import Search from "./Search";
 
 export const Gifs = ({ param }) => {
   localStorage.setItem("Mygif", param);
@@ -16,6 +17,7 @@ export const Gifs = ({ param }) => {
       >
         Go to Home Page
       </Link>
+      <Search />
       <ListGifs gifs={gifs} />
     </>
   );

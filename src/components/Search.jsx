@@ -16,12 +16,12 @@ function Search() {
 
   return (
     <form onSubmit={handleSubmit} className="my-6">
-      <label htmlFor="search">Search</label>
       <input
         onChange={handleChange}
         className="mx-2 text-black p-1"
         type="text"
         name="search"
+        placeholder="Search Gifs"
       />
       <button>Submit</button>
     </form>
