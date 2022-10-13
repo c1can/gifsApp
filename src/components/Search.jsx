@@ -1,21 +1,44 @@
 import React from "react";
-import { useState } from "react";
+import { useReducer } from "react";
 import { useLocation } from "wouter";
 
 function Search() {
-  const [gifValue, setValue] = useState("");
   const [path, setPath] = useLocation();
-  const [categoryy, setCategory] = useState("g");
+
+  const reducer = (state, action) => {
+    if (action.type == "changeValue") {
+      return {
+        ...state,
+        gifValue: action.playload,
+        time: state.time + 1,
+        time2: state.time + 2,
+      };
+    }
+    if (action.type == "changeRating") {
+      return {
+        ...state,
+        categoryy: action.playload,
+      };
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, {
+    gifValue: "",
+    time: 0,
+    time2: 0,
+    categoryy: "g",
+  });
+  const { gifValue, time, categoryy, time2 } = state;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setPath(`/gif/${gifValue}/${categoryy}`);
   };
   const handleChange = (evt) => {
-    setValue(evt.target.value);
+    dispatch({ type: "changeValue", playload: evt.target.value });
   };
   const handleSelect = (evt) => {
-    setCategory(evt.target.value);
+    dispatch({ type: "changeRating", playload: evt.target.value });
   };
 
   const ratings = ["g", "pg", "pg-13", "r"];
@@ -39,6 +62,8 @@ function Search() {
           <option key={rating}>{rating}</option>
         ))}
       </select>
+      <p>{time}</p>
+      <p>{time2}</p>
     </form>
   );
 }

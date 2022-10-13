@@ -23,6 +23,7 @@ export const Gifs = ({ param }) => {
         Go to Home Page
       </Link>
       <Search />
+      <h1 className="text-3xl">{decodeURI(keyword).toUpperCase()}</h1>
       <ListGifs gifs={gifs} />
     </>
   );
