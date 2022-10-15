@@ -11,19 +11,23 @@ function Search() {
   };
 
   const reducer = (state, action) => {
-    if (action.type == ACTIONS.UPDATE_KEYWORD) {
-      return {
-        ...state,
-        gifValue: action.payload,
-        time: state.time + 1,
-        time2: state.time + 2,
-      };
-    }
-    if (action.type == ACTIONS.UPDATE_RATING) {
-      return {
-        ...state,
-        categoryy: action.payload,
-      };
+    switch (action.type) {
+      case ACTIONS.UPDATE_KEYWORD:
+        return {
+          ...state,
+          gifValue: action.payload,
+          time: state.time + 1,
+          time2: state.time2 + 1,
+        };
+
+      case ACTIONS.UPDATE_RATING:
+        return {
+          ...state,
+          category: action.payload,
+        };
+
+      default:
+        break;
     }
   };
 
@@ -31,13 +35,13 @@ function Search() {
     gifValue: "",
     time: 0,
     time2: 0,
-    categoryy: "g",
+    category: "g",
   });
-  const { gifValue, time, categoryy, time2 } = state;
+  const { gifValue, time, category, time2 } = state;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setPath(`/gif/${gifValue}/${categoryy}`);
+    setPath(`/gif/${gifValue}/${category}`);
   };
   const handleChange = (evt) => {
     dispatch({ type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value });
