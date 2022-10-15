@@ -10,7 +10,7 @@ export const Routes = () => {
       <GifContextProvider>
         <Route path="/" component={Home}></Route>
 
-        <Route path="/gif/:keyword/:category?">
+        <Route path="/gif/:keyword/:category?/:language?">
           {(params) => <Gifs param={params} />}
         </Route>
 
