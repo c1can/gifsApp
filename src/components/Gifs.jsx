@@ -5,10 +5,10 @@ import { Link } from "wouter";
 import Search from "./Search";
 
 export const Gifs = ({ param }) => {
-  const { keyword, category } = param;
+  const { keyword, category, language } = param;
 
   localStorage.setItem("Mygif", keyword);
-  const { gifs } = useGifs(keyword, category);
+  const { gifs } = useGifs(keyword, category, language);
 
   return (
     <>

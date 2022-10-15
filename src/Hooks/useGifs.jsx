@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Getgifs } from "../services/Gif";
 import { GifContext } from "../context/GifContext";
 
-export const useGifs = (param = null, category = "g") => {
+export const useGifs = (param = null, category, language) => {
   let INITIAL_STATE = 0;
   const [page, setPage] = useState(INITIAL_STATE);
   const { gifs, setGifs } = useContext(GifContext);
@@ -12,7 +12,11 @@ export const useGifs = (param = null, category = "g") => {
 
   useEffect(() => {
     const mycall = async () => {
-      const data = await Getgifs({ keyword: newKeyword, category: category });
+      const data = await Getgifs({
+        keyword: newKeyword,
+        category: category,
+        language: language,
+      });
       setGifs(data);
     };
     mycall();
@@ -26,6 +30,7 @@ export const useGifs = (param = null, category = "g") => {
         keyword: newKeyword,
         page: page,
         category: category,
+        language: language,
       });
       setGifs((prev) => prev.concat(data));
       setLoading(false);
