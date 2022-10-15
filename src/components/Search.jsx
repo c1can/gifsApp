@@ -5,19 +5,24 @@ import { useLocation } from "wouter";
 function Search() {
   const [path, setPath] = useLocation();
 
+  const ACTIONS = {
+    UPDATE_KEYWORD: "update_keyword",
+    UPDATE_RATING: "update_rating",
+  };
+
   const reducer = (state, action) => {
-    if (action.type == "changeValue") {
+    if (action.type == ACTIONS.UPDATE_KEYWORD) {
       return {
         ...state,
-        gifValue: action.playload,
+        gifValue: action.payload,
         time: state.time + 1,
         time2: state.time + 2,
       };
     }
-    if (action.type == "changeRating") {
+    if (action.type == ACTIONS.UPDATE_RATING) {
       return {
         ...state,
-        categoryy: action.playload,
+        categoryy: action.payload,
       };
     }
   };
@@ -35,10 +40,10 @@ function Search() {
     setPath(`/gif/${gifValue}/${categoryy}`);
   };
   const handleChange = (evt) => {
-    dispatch({ type: "changeValue", playload: evt.target.value });
+    dispatch({ type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value });
   };
   const handleSelect = (evt) => {
-    dispatch({ type: "changeRating", playload: evt.target.value });
+    dispatch({ type: ACTIONS.UPDATE_RATING, payload: evt.target.value });
   };
 
   const ratings = ["g", "pg", "pg-13", "r"];
