@@ -12,15 +12,12 @@ export const Routes = () => {
       <GifContextProvider>
         <Switch>
           <Route path="/" component={Home}></Route>
-
           <Route path="/gif/:keyword/:category?/:language?">
             {(params) => <Gifs param={params} />}
           </Route>
-
           <Route path="/details/:id">
             {(params) => <Details id={params.id} />}
           </Route>
-
           <Route path="/InvalidSearch" component={InvalidSearch}></Route>
           <Route component={Error} />
         </Switch>
