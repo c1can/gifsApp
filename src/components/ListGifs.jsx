@@ -18,11 +18,11 @@ export const ListGifs = ({ gifs }) => {
   return (
     <>
       <section className="list_gifs w-4/5 auto-margin grid custom-grid gap-4 items-center">
-        {gifs.map(({ title, id, images }) => {
+        {gifs.map(({ title, id, images }, index) => {
           const { downsized_medium } = images;
           const { url } = downsized_medium;
 
-          return <Gif title={title} image={url} id={id} key={id} />;
+          return <Gif title={title} image={url} id={id} key={url} />;
         })}
       </section>
       <ClipLoader loading={loading} color={"#fff"} size={50} />

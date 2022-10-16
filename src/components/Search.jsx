@@ -1,43 +1,12 @@
 import React from "react";
-import { useReducer } from "react";
 import { useLocation } from "wouter";
+import { useReduce } from "../Hooks/useReduce";
 
 function Search() {
   const [path, setPath] = useLocation();
 
-  const ACTIONS = {
-    UPDATE_KEYWORD: "update_keyword",
-    UPDATE_SELECT: "update_select",
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case ACTIONS.UPDATE_KEYWORD:
-        return {
-          ...state,
-          gifValue: action.payload,
-          time: state.time + 1,
-          time2: state.time2 + 1,
-        };
-      case ACTIONS.UPDATE_SELECT:
-        return {
-          ...state,
-          [action.reference]: action.payload,
-        };
-
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(reducer, {
-    gifValue: "",
-    time: 0,
-    time2: 0,
-    category: "g",
-    language: "en",
-  });
-  const { gifValue, time, category, time2, language } = state;
+  const { state, dispatch, ACTIONS } = useReduce();
+  const { gifValue, time, time2, category, language } = state;
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
