@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "wouter";
 import { useReduce } from "../Hooks/useReduce";
 
-function Search() {
+export function Search() {
   const [path, setPath] = useLocation();
 
   const { state, dispatch, ACTIONS } = useReduce();
@@ -10,7 +10,9 @@ function Search() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setPath(`/gif/${gifValue}/${category}/${language}`);
+    gifValue == ""
+      ? setPath("/InvalidSearch")
+      : setPath(`/gif/${gifValue}/${category}/${language}`);
   };
   const handleChange = (evt) => {
     dispatch({ type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value });
