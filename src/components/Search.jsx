@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "wouter";
 import { useReduce } from "../Hooks/useReduce";
 
-export function Search() {
+function Search() {
   const [path, setPath] = useLocation();
 
   const { state, dispatch, ACTIONS } = useReduce();

@@ -1,5 +1,5 @@
 import { Head } from "./Helmet";
-import { Search } from "./Search";
+import Search from "./Search";
 
 export function InvalidSearch() {
   return (
