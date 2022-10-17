@@ -18,7 +18,7 @@ export const ListGifs = ({ gifs }) => {
   return (
     <>
       <section className="list_gifs w-4/5 auto-margin grid custom-grid gap-4 items-center">
-        {gifs.map(({ title, id, images }, index) => {
+        {gifs.map(({ title, id, images }) => {
           const { downsized_medium } = images;
           const { url } = downsized_medium;
 
