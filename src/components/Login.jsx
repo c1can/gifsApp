@@ -15,7 +15,6 @@ export function Login() {
     console.log(username, password);
   };
 
-  //reparar este bug que sobreescribe
   const handleUser = (evt) => {
     setUser({
       ...state,
