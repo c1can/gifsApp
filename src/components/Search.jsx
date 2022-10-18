@@ -15,7 +15,10 @@ function Search() {
       : setPath(`/gif/${gifValue}/${category}/${language}`);
   };
   const handleChange = (evt) => {
-    dispatch({ type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value });
+    dispatch({
+      type: ACTIONS.UPDATE_KEYWORD,
+      payload: evt.target.value,
+    });
   };
   const handleSelect = (evt) => {
     dispatch({
