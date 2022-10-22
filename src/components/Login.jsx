@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { Head } from "./Helmet";
@@ -12,7 +13,7 @@ export function Login() {
 
   const logUser = (e) => {
     e.preventDefault();
-    console.log(username, password);
+    setPath("/");
   };
 
   const handleUser = (evt) => {
