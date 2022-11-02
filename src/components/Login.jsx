@@ -4,7 +4,7 @@ import { Head } from "./Helmet";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-export function Register() {
+export function Login() {
   const [path, setPath] = useLocation();
   const [state, setUser] = useState({
     email: "",
@@ -13,27 +13,15 @@ export function Register() {
   const [error, setError] = useState("");
   const { email, password } = state;
 
-  const { authUser } = useContext(AuthContext);
+  const { logUser } = useContext(AuthContext);
 
-  const registerUser = async (e) => {
+  const login = async (e) => {
     e.preventDefault();
     try {
-      await authUser(email, password);
+      await logUser(email, password);
       setPath("/");
     } catch (error) {
-      if (error.code == "auth/invalid-email") {
-        setError("Ingresa un email valido");
-      }
-      //todo more error codes
-      if (error.code == "auth/weak-password") {
-        setError("Contraseña debil");
-      }
-      if (error.code == "auth/email-already-in-use") {
-        setError("El correo ya esta en uso");
-      }
-      setTimeout(() => {
-        setError("");
-      }, 3000);
+      setError(error.code);
     }
   };
 
@@ -46,13 +34,13 @@ export function Register() {
 
   return (
     <>
-      <Head title="Register" description="This is the register page" />
-      <form onSubmit={registerUser} className="text-black flex flex-col gap-4">
+      <Head title="Login" description="This is the login page" />
+      <form onSubmit={login} className="text-black flex flex-col gap-4">
         <input type="text" name="email" onChange={handleUser} />
         <input type="password" name="password" onChange={handleUser} />
 
         <button type="submit" className="text-white">
-          Register
+          Login
         </button>
       </form>
       {error && <p>{error}</p>}

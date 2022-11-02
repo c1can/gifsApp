@@ -6,6 +6,7 @@ import { Error } from "../components/404";
 import { Route, Switch } from "wouter";
 import { GifContextProvider } from "../context/GifContext";
 import { Register } from "../components/Register";
+import { Login } from "../components/Login";
 
 export const Routes = () => {
   return (
@@ -21,6 +22,7 @@ export const Routes = () => {
           </Route>
           <Route path="/InvalidSearch" component={InvalidSearch}></Route>
           <Route path="/register" component={Register}></Route>
+          <Route path="/login" component={Login}></Route>
           <Route component={Error} />
         </Switch>
       </GifContextProvider>
