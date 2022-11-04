@@ -13,7 +13,7 @@ export function Login() {
   const [error, setError] = useState("");
   const { email, password } = state;
 
-  const { logUser } = useContext(AuthContext);
+  const { logUser, logWithGoogle } = useContext(AuthContext);
 
   const login = async (e) => {
     e.preventDefault();
@@ -32,6 +32,11 @@ export function Login() {
     });
   };
 
+  const handleGoogleLogin = async () => {
+    const token = await logWithGoogle();
+    token == undefined ? null : setPath("/");
+  };
+
   return (
     <>
       <Head title="Login" description="This is the login page" />
@@ -43,6 +48,14 @@ export function Login() {
           Login
         </button>
       </form>
+
+      <button
+        onClick={handleGoogleLogin}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4"
+      >
+        Login with Google
+      </button>
+
       {error && <p>{error}</p>}
     </>
   );
