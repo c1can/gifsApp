@@ -13,23 +13,29 @@ export const Routes = () => {
   return (
     <>
       <GifContextProvider>
-        <Switch>
-          <Route path="/">
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          </Route>
-          <Route path="/gif/:keyword/:category?/:language?">
-            {(params) => <Gifs param={params} />}
-          </Route>
-          <Route path="/details/:id">
-            {(params) => <Details id={params.id} />}
-          </Route>
-          <Route path="/InvalidSearch" component={InvalidSearch}></Route>
-          <Route path="/register" component={Register}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route component={Error} />
-        </Switch>
+
+          <Switch>
+            <Route path="/">
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            </Route>
+            <Route path="/gif/:keyword/:category?/:language?">
+              {(params) => <ProtectedRoute><Gifs param={params}/></ProtectedRoute>}
+            </Route>
+            <Route path="/details/:id">
+              {(params) => <ProtectedRoute><Details id={params.id} /></ProtectedRoute>}
+            </Route>
+            <Route path="/InvalidSearch">
+             <ProtectedRoute>
+              <InvalidSearch />
+             </ProtectedRoute>
+            </Route>
+            <Route path="/register" component={Register}></Route>
+            <Route path="/login" component={Login}></Route>
+            <Route component={Error} />
+          </Switch>
+          
       </GifContextProvider>
     </>
   );

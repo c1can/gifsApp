@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 export function Nav() {
   const { logOut } = useContext(AuthContext);
+
   const handleClick = async () => {
     await logOut();
   };

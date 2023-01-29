@@ -7,7 +7,6 @@ import { Nav } from "./Nav";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useEffect } from "react";
-import { useRouter } from "wouter";
 
 export const Home = () => {
   const { gifs } = useGifs();
